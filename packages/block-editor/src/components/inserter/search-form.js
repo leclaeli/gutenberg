@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 import { useInstanceId } from '@wordpress/compose';
@@ -6,7 +11,7 @@ import { __ } from '@wordpress/i18n';
 import { VisuallyHidden } from '@wordpress/components';
 import { Icon, search } from '@wordpress/icons';
 
-function InserterSearchForm( { onChange } ) {
+function InserterSearchForm( { className, onChange } ) {
 	const instanceId = useInstanceId( InserterSearchForm );
 
 	// Disable reason (no-autofocus): The inserter menu is a modal display, not one which
@@ -14,7 +19,12 @@ function InserterSearchForm( { onChange } ) {
 	// Popover's focusOnMount.
 	/* eslint-disable jsx-a11y/no-autofocus */
 	return (
-		<div className="block-editor-inserter__search">
+		<div
+			className={ classnames(
+				'block-editor-inserter__search',
+				className
+			) }
+		>
 			<VisuallyHidden
 				as="label"
 				htmlFor={ `block-editor-inserter__search-${ instanceId }` }
